@@ -1,7 +1,7 @@
 require 'net/http'
 
 class WeatherApiConnector
-  API_KEY = 'cda935de2a524f0284372551231404'
+  API_KEY = A9n.weather_api_key
   LOCATION = 'Cracow'
 
   def weather_data
