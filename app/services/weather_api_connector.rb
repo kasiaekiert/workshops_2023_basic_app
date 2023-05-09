@@ -8,6 +8,6 @@ class WeatherApiConnector
     url = "http://api.weatherapi.com/v1/current.json?key=#{API_KEY}&q=#{LOCATION}"
     uri = URI(url)
     response = Net::HTTP.get(uri)
-    @data = JSON.parse(response)
+    JSON.parse(response)
   end
 end
