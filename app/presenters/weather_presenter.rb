@@ -1,16 +1,18 @@
 class WeatherPresenter
+  attr_reader :description, :temperature, :icon
+
   def initialize(data)
     @description = data['current']['condition']['text']
     @temperature = data['current']['temp_c']
     @icon = data['current']['condition']['icon']
   end
-
+  
   def nice_weather?
     @description == 'Sunny' || @description == 'Partly cloudy'
   end
 
   def good_to_read_outside?
-    nice_weather? && @temperature > 15
+    nice_weather? && temperature > 15
   end
 
   def encourage_text
