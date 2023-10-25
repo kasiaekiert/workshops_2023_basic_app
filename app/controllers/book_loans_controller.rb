@@ -9,6 +9,7 @@ class BookLoansController < ApplicationController
         DueDateNotificationJob.perform_at(@book_load.due_date - 1.day)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
+        notice_calendar
       else
         format.html { redirect_to book_url(book), alert: @book_loan.errors.full_messages.join(', ') }
         format.json { render json: @book_loan.errors, status: :unprocessable_entity }
@@ -23,6 +24,10 @@ class BookLoansController < ApplicationController
         format.json { render :show, status: :ok, location: book }
       end
     end
+  end
+
+  def notice_calendar
+    UserCalendarNotifier.new(current_user, book).insert_event
   end
 
   private
