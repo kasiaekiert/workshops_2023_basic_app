@@ -2,6 +2,7 @@ class WeatherPresenter
   attr_reader :description, :temperature, :icon
 
   def initialize(data)
+    @data = data
     @description = data['current']['condition']['text']
     @temperature = data['current']['temp_c']
     @icon = data['current']['condition']['icon']
