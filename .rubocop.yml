@@ -27,9 +27,6 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*'
 
-RSpec/AnyInstance:
-  Enabled: false
-
 Metrics/AbcSize:
   CountRepeatedAttributes: false
 

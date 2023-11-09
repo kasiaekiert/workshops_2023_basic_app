@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get '/books/search'
-  resources :books
+  resources :books do
+    get :search, on: :collection
+  end
   resources :publishers
   resources :authors
   resources :categories
