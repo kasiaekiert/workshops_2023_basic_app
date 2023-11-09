@@ -50,8 +50,11 @@ class BooksController < ApplicationController
 
   def search
     @books = Book.where("title LIKE ?", "%#{params[:search]}%")
+
     respond_to do |format|
-      format.json { render json: render_to_string(partial: 'books/index_item', collection: @books, as: :book, formats: [:html])}
+      format.json { render json: render_to_string(
+        partial: 'books/index_item', collection: @books, as: :book, formats: [:html]
+        )}
     end
   end
 
