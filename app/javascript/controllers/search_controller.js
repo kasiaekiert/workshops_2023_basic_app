@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["params"]
 
   connect() {
-    const value = this.paramsTarget.value
+    const value = this.paramsTarget.value;
 
     fetch(`/books/search?search=${value}`, {
       headers: {
