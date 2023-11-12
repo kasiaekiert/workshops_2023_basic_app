@@ -1,6 +1,7 @@
 module ApplicationHelper
   def weather_data
     @weather_data ||= WeatherApiConnector.new.weather_data
+    @location = WeatherApiConnector::LOCATION
   end
 
   def weather_presenter

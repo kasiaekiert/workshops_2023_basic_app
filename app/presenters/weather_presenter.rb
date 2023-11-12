@@ -2,18 +2,9 @@ class WeatherPresenter
   attr_reader :description, :temperature, :icon
 
   def initialize(data)
-    @data = data
-    @description = data['current']['condition']['text']
-    @temperature = data['current']['temp_c']
-    @icon = data['current']['condition']['icon']
-  end
-  
-  def nice_weather?
-    @description == 'Sunny' || @description == 'Partly cloudy'
-  end
-
-  def good_to_read_outside?
-    nice_weather? && temperature > 15
+    @description = data.dig('current', 'condition', 'text')
+    @temperature = data.dig('current', 'temp_c')
+    @icon = data.dig('current', 'condition', 'icon')
   end
 
   def encourage_text
@@ -24,31 +15,15 @@ class WeatherPresenter
     end
   end
 
-  def description
-    data['current']['condition']['text']
-  end
-
-  def temperature
-    data['current']['temp_c']
-  end
-
-  def icon
-    data['current']['condition']['icon']
-  end
-
-  def location
-    data['location']['name']
-  end
-
   private
 
   attr_reader :data
 
   def nice_weather?
-    description == 'Sunny' || 'Partly cloudy'
+    description == 'Sunny' || description == 'Partly cloudy'
   end
 
   def good_to_read_outside?
-    nice_weather? && temperature > 15
+    nice_weather? && temperature.to_f > 15
   end
 end

@@ -7,9 +7,9 @@ class BookLoansController < ApplicationController
       if @book_loan.save
         LoanCreatedJob.perform_async(@book_loan.id)
         DueDateNotificationJob.perform_at(@book_load.due_date - 1.day)
+        notice_calendar
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
-        notice_calendar
       else
         format.html { redirect_to book_url(book), alert: @book_loan.errors.full_messages.join(', ') }
         format.json { render json: @book_loan.errors, status: :unprocessable_entity }
