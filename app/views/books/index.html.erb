@@ -3,7 +3,7 @@
 <div class="container">
   <h1 class="text-center mb-5">Books</h1>
   <div class='text-center mb-5' data-controller='search'>
-    <%= text_field_tag :query,'', placeholder: 'Search by title', data: { action: 'input->search#connect', search_target: :params } %>
+    <%= text_field_tag :query,'', placeholder: 'Search by title', data: { action: 'input->search#find', search_target: :params } %>
   </div>
   <div class="row" id="search_results"></div>
 

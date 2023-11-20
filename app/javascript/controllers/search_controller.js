@@ -3,10 +3,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["params"]
 
-  connect() {
+  find() {
     const value = this.paramsTarget.value;
 
-    fetch(`/books/search?search=${value}`, {
+      fetch(`/books/search?search=${value}`, {
       headers: {
         "Content-Type": "application/json",
       }
